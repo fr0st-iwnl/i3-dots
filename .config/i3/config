@@ -104,12 +104,15 @@ bindsym $mod+BackSpace exec --no-startup-id "bash ~/.config/polybar/cuts/scripts
 #░▀░▀░▀░▀░▀▀▀░▀▀▀░▀░░░▀░▀░▀░░░▀▀▀░▀░▀░░░░▀▀░░░▀▀▀░░▀░░▀░▀░▀░▀░░▀░░▀▀▀░▀░░
 
 # Wallpaper
-exec_always --no-startup-id feh --bg-scale "$HOME/Pictures/wallz/Catppuccin Mocha/31. Catppuccin Mocha.png"
+exec_always --no-startup-id feh --bg-scale "$HOME/Pictures/wallz/Catppuccin Mocha/31.Catppuccin Mocha.png"
 
 # Run pywal script on startup
-exec_always --no-startup-id bash ~/.config/polybar/cuts/scripts/pywal.sh $HOME/Pictures/wallz/Catppuccin Mocha/31. Catppuccin Mocha.png
+#exec_always --no-startup-id bash ~/.config/polybar/cuts/scripts/pywal.sh "$HOME/Pictures/wallz/Catppuccin Mocha/31.Catppuccin Mocha.png"
+
+exec --no-startup-id xcompmgr -c -t-5 -l-5 -r4.2 -o.55
 
 
+exec_always --no-startup-id bash ~/.config/polybar/launch.sh --cuts
 
 
 
@@ -132,7 +135,8 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l dim -- --color 1E1E2E
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -149,14 +153,23 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # Windows
-for_window [class=".*"] border normal
-client.focused          #FFD16F  #1F1626  #FFFFFF  #FFD16F  #1F1626
-client.focused_inactive #8C1F1626 #1F1626  #FFFFFF  #FFD16F  #1F1626
-client.unfocused        #1F1626  #1F1626  #33FFFFFF  #1F1626  #1F1626
-client.urgent           #FF5250  #1F1626  #FFFFFF  #FF5250  #1F1626
+# Border width
+for_window [class="^.*"] border pixel 1.5
 
-gaps inner 2
-gaps outer 5
+# Focused window (active) = yellow border
+client.focused          #FFD16F  #1F1626  #FFFFFF  #FFD16F  #FFD16F
+
+# Focused but inactive (e.g. split container not in use) = purple border
+client.focused_inactive #CBA6F7  #1F1626  #FFFFFF  #CBA6F7  #CBA6F7
+
+# Unfocused window (normal inactive) = purple border
+client.unfocused        #1F1626  #1F1626  #A1A8C9  #CBA6F7  #1F1626
+
+# Urgent window = red border
+client.urgent           #FF5250  #1F1626  #FFFFFF  #FF5250  #FF5250
+
+gaps inner 5
+gaps outer 3
 
 
 

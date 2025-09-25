@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
 NOTIFY_ICON=/usr/share/icons/Papirus/32x32/apps/system-software-update.svg
+TERMINAL="kitty"
+UPDATE_SCRIPT="$HOME/local/share/bin/update"
 
-get_total_updates() { UPDATES=$(~/.config/polybar/cuts/scripts/checkupdates 2>/dev/null | wc -l); }
+get_total_updates() {
+    UPDATES=$(~/.config/polybar/cuts/scripts/checkupdates 2>/dev/null | wc -l)
+}
 
 while true; do
     get_total_updates
@@ -22,23 +26,19 @@ while true; do
     fi
 
     # when there are updates available
-    # every 10 seconds another check for updates is done
     while (( UPDATES > 0 )); do
         if (( UPDATES == 1 )); then
-            echo " $UPDATES"
-        elif (( UPDATES > 1 )); then
-            echo " $UPDATES"
+            echo "%{A1:$TERMINAL -e bash -c '$UPDATE_SCRIPT; read -p \"Press enter to close\"':} $UPDATES %{A}"
         else
-            echo " None"
+            echo "%{A1:$TERMINAL -e bash -c '$UPDATE_SCRIPT; read -p \"Press enter to close\"':} $UPDATES %{A}"
         fi
         sleep 10
         get_total_updates
     done
 
-    # when no updates are available, use a longer loop, this saves on CPU
-    # and network uptime, only checking once every 30 min for new updates
+    # when no updates are available
     while (( UPDATES == 0 )); do
-        echo " None"
+        echo "%{A1:$TERMINAL -e bash -c '$UPDATE_SCRIPT; read -p \"Press enter to close\"':} 0 %{A}"
         sleep 1800
         get_total_updates
     done
