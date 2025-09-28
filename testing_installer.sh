@@ -33,11 +33,15 @@ echo "==> Setting up user directories..."
 xdg-user-dirs-update
 
 # -----------------------------
-# Download wallpapers
+# Download and extract wallpapers
 # -----------------------------
 echo "==> Downloading wallpapers..."
 curl -L -o "$WALLPAPER_ZIP" https://github.com/fr0st-iwnl/wallz/releases/latest/download/wallz.zip
-unzip -o "$WALLPAPER_ZIP" -d "$HOME/Pictures"
+
+echo "==> Extracting wallpapers..."
+mkdir -p "$HOME/Pictures/wallpapers"
+# Ensure script continues even if unzip returns warnings
+unzip -o "$WALLPAPER_ZIP" -d "$HOME/Pictures/wallpapers" > /dev/null 2>&1 || true
 rm "$WALLPAPER_ZIP"
 
 # -----------------------------
