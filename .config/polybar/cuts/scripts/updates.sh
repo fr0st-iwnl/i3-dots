@@ -2,7 +2,7 @@
 
 NOTIFY_ICON=/usr/share/icons/Papirus/32x32/apps/system-software-update.svg
 TERMINAL="kitty"
-UPDATE_SCRIPT="$HOME/local/share/bin/update"
+UPDATE_SCRIPT=".local/share/bin/update"
 
 get_total_updates() {
     UPDATES=$(~/.config/polybar/cuts/scripts/checkupdates 2>/dev/null | wc -l)
