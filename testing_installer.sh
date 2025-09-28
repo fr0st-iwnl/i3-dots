@@ -24,7 +24,7 @@ sudo pacman -S --noconfirm --needed \
     vim git feh picom xcompmgr pacman-contrib \
     lxappearance orchis-theme autotiling unzip file-roller \
     rofi firefox kitty thunar polybar nerd-fonts fastfetch \
-    pavucontrol i3-wm i3status i3lock
+    pavucontrol i3-wm i3status
 
 # -----------------------------
 # Set up user directories
@@ -40,7 +40,6 @@ curl -L -o "$WALLPAPER_ZIP" https://github.com/fr0st-iwnl/wallz/releases/latest/
 
 echo "==> Extracting wallpapers..."
 mkdir -p "$HOME/Pictures/wallpapers"
-# Ensure script continues even if unzip returns warnings
 unzip -o "$WALLPAPER_ZIP" -d "$HOME/Pictures/wallpapers" > /dev/null 2>&1 || true
 rm "$WALLPAPER_ZIP"
 
@@ -57,10 +56,10 @@ if ! command -v paru &> /dev/null; then
 fi
 
 # -----------------------------
-# Install AUR packages
+# Install AUR packages (fix conflicts)
 # -----------------------------
 echo "==> Installing AUR packages..."
-paru -S --noconfirm --needed vscodium-bin betterlockscreen
+paru -S --noconfirm --needed i3lock-color betterlockscreen vscodium-bin
 
 # -----------------------------
 # Set up .config
@@ -70,11 +69,10 @@ if [ ! -d "$CONFIG_REPO" ]; then
     git clone https://github.com/fr0st-iwnl/i3-dots.git "$CONFIG_REPO"
 fi
 
-# Symlink all configs
 for config in "$CONFIG_REPO/.config/"*; do
     dest="$HOME/.config/$(basename $config)"
     mkdir -p "$(dirname "$dest")"
-    rm -rf "$dest" # remove existing
+    rm -rf "$dest"
     ln -s "$config" "$dest"
 done
 
@@ -88,12 +86,11 @@ fi
 cd "$SH_TOOLBOX_DIR"
 chmod +x sh-toolbox.sh
 
-# Run installer and automatically select keybind startup -> option 1
 yes "" | ./sh-toolbox.sh -i
 echo "1" | ./sh-toolbox.sh keybind startup
 
 # -----------------------------
-# Install and configure LightDM for auto-login
+# Install and configure LightDM
 # -----------------------------
 echo "==> Installing LightDM..."
 sudo pacman -S --noconfirm --needed lightdm lightdm-gtk-greeter
