@@ -4,6 +4,7 @@
 sudo pacman -S xdg-user-dirs
 sudo pacman -S xfce4-settings
 xdg-user-dirs-update
+sudo pacman -S dunst libnotify
 sudo pacman -S vim
 sudo pacman -S git
 sudo pacman -S feh
@@ -21,6 +22,8 @@ sudo pacman -S kitty
 sudo pacman -S thunar
 sudo pacman -S polybar
 sudo pacman -S nerd-fonts
+sudo pacman -S fastfetch
+sudo pacman -S pavucontrol
 
 
 # install paru
