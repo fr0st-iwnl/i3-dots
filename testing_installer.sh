@@ -97,7 +97,7 @@ sudo pacman -S --noconfirm sxhkd
 source ~/.bashrc
 
 # Run keybind startup and automatically choose 1
-echo "1" | ./sh-toolbox.sh keybind startup
+echo "1" | ./sh-toolbox.sh --keybind startup
 
 
 # -----------------------------
