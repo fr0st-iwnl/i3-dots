@@ -104,7 +104,7 @@ bindsym $mod+BackSpace exec --no-startup-id "bash ~/.config/polybar/cuts/scripts
 #░▀░▀░▀░▀░▀▀▀░▀▀▀░▀░░░▀░▀░▀░░░▀▀▀░▀░▀░░░░▀▀░░░▀▀▀░░▀░░▀░▀░▀░▀░░▀░░▀▀▀░▀░░
 
 # Wallpaper
-exec_always --no-startup-id feh --bg-scale "$HOME/Pictures/wallz/Catppuccin Mocha/31.Catppuccin Mocha.png"
+exec_always --no-startup-id feh --bg-scale "$HOME/Pictures/wallz/Catppuccin Mocha/31. Catppuccin Mocha.png"
 
 # Run pywal script on startup
 #exec_always --no-startup-id bash ~/.config/polybar/cuts/scripts/pywal.sh "$HOME/Pictures/wallz/Catppuccin Mocha/31.Catppuccin Mocha.png"
