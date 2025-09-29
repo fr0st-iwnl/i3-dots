@@ -65,7 +65,7 @@ fi
 # Install AUR packages (fix conflicts)
 # -----------------------------
 echo "==> Installing AUR packages..."
-paru -S --noconfirm --needed i3lock-color betterlockscreen vscodium-bin
+paru -S --noconfirm --needed i3lock-color betterlockscreen vscodium-bin ttf-icomoon-feather-git
 
 # -----------------------------
 # Set up .config
@@ -98,6 +98,8 @@ yes "" | ./sh-toolbox.sh -i
 # Install sxhkd required for keybind
 echo "==> Installing sxhkd for keybindings..."
 sudo pacman -S --noconfirm sxhkd
+
+echo "y" | ./sh-toolbox.sh --keybind load
 
 # Run keybind startup and automatically choose 1
 echo "1" | ./sh-toolbox.sh --keybind startup

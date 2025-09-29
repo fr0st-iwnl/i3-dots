@@ -114,7 +114,7 @@ exec --no-startup-id xcompmgr -c -t-5 -l-5 -r4.2 -o.55
 
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh --cuts
 
-exec_always autotiling -w 1 3 5 7 9
+exec_always autotiling
 
 
 
