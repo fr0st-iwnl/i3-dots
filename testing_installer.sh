@@ -89,8 +89,16 @@ chmod +x sh-toolbox.sh
 # Run sh-toolbox installer
 yes "" | ./sh-toolbox.sh -i
 
-# Run keybind startup in a new shell so environment changes take effect
-bash -c "source ~/.bashrc 2>/dev/null || true; $SH_TOOLBOX_DIR/sh-toolbox.sh keybind startup <<< '1'"
+# Install sxhkd required for keybind
+echo "==> Installing sxhkd for keybindings..."
+sudo pacman -S --noconfirm sxhkd
+
+# Source bashrc to refresh environment
+source ~/.bashrc
+
+# Run keybind startup and automatically choose 1
+echo "1" | ./sh-toolbox.sh keybind startup
+
 
 # -----------------------------
 # Install and configure LightDM
