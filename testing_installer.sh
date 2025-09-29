@@ -86,8 +86,11 @@ fi
 cd "$SH_TOOLBOX_DIR"
 chmod +x sh-toolbox.sh
 
+# Run sh-toolbox installer
 yes "" | ./sh-toolbox.sh -i
-echo "1" | ./sh-toolbox.sh keybind startup
+
+# Run keybind startup in a new shell so environment changes take effect
+bash -c "source ~/.bashrc 2>/dev/null || true; $SH_TOOLBOX_DIR/sh-toolbox.sh keybind startup <<< '1'"
 
 # -----------------------------
 # Install and configure LightDM
