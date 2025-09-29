@@ -5,9 +5,16 @@ set -e
 # Variables
 # -----------------------------
 CONFIG_REPO="$HOME/i3-dots"
+LOG_FILE="$CONFIG_REPO/install.log"
 WALLPAPER_ZIP="$HOME/wallz.zip"
 SH_TOOLBOX_DIR="$HOME/sh-toolbox"
 USER_NAME="$USER"  # Current logged-in user
+
+# -----------------------------
+# Setup logging
+# -----------------------------
+mkdir -p "$CONFIG_REPO"
+exec > >(tee -i "$LOG_FILE") 2>&1
 
 # -----------------------------
 # Update system
@@ -93,12 +100,8 @@ yes "" | ./sh-toolbox.sh -i
 echo "==> Installing sxhkd for keybindings..."
 sudo pacman -S --noconfirm sxhkd
 
-# Source bashrc to refresh environment
-source ~/.bashrc
-
 # Run keybind startup and automatically choose 1
 echo "1" | ./sh-toolbox.sh --keybind startup
-
 
 # -----------------------------
 # Install and configure LightDM
@@ -114,3 +117,4 @@ sudo mkdir -p /etc/lightdm/lightdm.conf.d
 echo -e "[Seat:*]\nautologin-user=$USER_NAME\nautologin-session=i3" | sudo tee /etc/lightdm/lightdm.conf.d/50-autologin.conf
 
 echo "==> Installation complete! Reboot your system and it will start directly into i3."
+echo "==> Full log saved to $LOG_FILE"
