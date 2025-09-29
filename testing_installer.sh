@@ -46,8 +46,7 @@ echo "==> Downloading wallpapers..."
 curl -L -o "$WALLPAPER_ZIP" https://github.com/fr0st-iwnl/wallz/releases/latest/download/wallz.zip
 
 echo "==> Extracting wallpapers..."
-mkdir -p "$HOME/Pictures/wallpapers"
-unzip -o "$WALLPAPER_ZIP" -d "$HOME/Pictures/wallpapers" > /dev/null 2>&1 || true
+unzip -o "$WALLPAPER_ZIP" -d "$HOME/Pictures" > /dev/null 2>&1 || true
 rm "$WALLPAPER_ZIP"
 
 # -----------------------------
