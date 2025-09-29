@@ -39,6 +39,8 @@ bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
+# NOTE: these might NOT work cuz of the autotiling
+# Remove autotiling if u want to use these 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -77,7 +79,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+g layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+f floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
