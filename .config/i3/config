@@ -39,8 +39,6 @@ bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-# NOTE: these might NOT work cuz of the autotiling
-# Remove autotiling if u want to use these 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -74,6 +72,8 @@ bindsym $mod+v split v
 bindsym F11 fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
+# NOTE: these might NOT work cuz of the autotiling
+# Remove autotiling if u want to use these 
 bindsym $mod+i layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+g layout toggle split
